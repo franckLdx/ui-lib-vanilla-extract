@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Variant } from "../styles/variants.css";
+import { Variant } from "../../styles/variants.css";
 import { buttonStyle } from "./button.css";
 
 interface ButtonProps {

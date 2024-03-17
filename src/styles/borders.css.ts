@@ -1,6 +1,6 @@
 import { createSquareTheme } from "./helpers";
 
-export const { square: borders } = createSquareTheme({
+export const { borders } = createSquareTheme('borders', {
   radius: { normal: '4px' },
   style: {
     normal: '1px solid',

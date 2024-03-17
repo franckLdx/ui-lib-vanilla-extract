@@ -1,24 +1,26 @@
 import { styleVariants } from '@vanilla-extract/css';
 import { colors } from './colors.css';
 
-export const variants = styleVariants({
+export const variantDefinitions = {
   brand: {
     color: colors.text.dark,
-    background: colors.interface.brand
+    backgroundColor: colors.interface.brand
   },
   bright: {
     color: colors.text.dark,
-    background: colors.interface.bright
+    backgroundColor: colors.interface.bright
   },
   dark: {
     color: colors.text.bright,
-    background: colors.interface.dark
+    backgroundColor: colors.interface.dark
   },
-});
+} as const
 
-export type Variant = keyof typeof variants
+export const variantStyles = styleVariants(variantDefinitions);
 
-export const variantNames: Record<Variant, string> = Object.keys(variants).reduce(
+export type Variant = keyof typeof variantDefinitions
+
+export const variantNames: Record<Variant, string> = Object.keys(variantDefinitions).reduce(
   (acc, name) => ({ ...acc, [name.toUpperCase()]: name }),
   {} as Record<Variant, string>
 )

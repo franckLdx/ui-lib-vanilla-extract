@@ -1,6 +1,6 @@
 import { createSquareTheme } from "./helpers";
 
-export const { square: fontWeight } = createSquareTheme({
+export const { fontWeight } = createSquareTheme('fontWeight', {
   normal: '400',
   bold: '700'
 })

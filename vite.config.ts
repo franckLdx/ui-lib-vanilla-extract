@@ -5,6 +5,11 @@ import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 
 export default defineConfig({
   plugins: [react(), vanillaExtractPlugin(
-    { identifiers: 'debug' }
+    {
+      identifiers: (info) => {
+        const suffix = `${info.debugId ?? info.hash ?? info.packageName ?? '!!'}`
+        return `square-${suffix}`
+      }
+    }
   )],
 })

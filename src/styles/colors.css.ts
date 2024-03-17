@@ -1,6 +1,6 @@
 import { createSquareTheme } from './helpers';
 
-export const { square: colors } = createSquareTheme({
+export const { colors } = createSquareTheme('colors', {
   interface: {
     brand: '#f5b027',
     dark: '#232323',
@@ -8,7 +8,7 @@ export const { square: colors } = createSquareTheme({
     grey: 'gray',
     lightgray: 'lightgray',
     darkgray: 'darkgray',
-    disabled: "#989898"
+    disabled: "#989898",
   },
   text: {
     dark: '#232323',
