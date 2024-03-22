@@ -33,8 +33,8 @@ const dark = style({
 
 export const buttonStyle = styleVariants(
   variantStyles,
-  (variant, key) => {
-    const common = [base, variant]
+  (_variant, key) => {
+    const common = [base]
     const specific = key === 'dark' ? [dark] : []
 
     return [...common, ...specific]

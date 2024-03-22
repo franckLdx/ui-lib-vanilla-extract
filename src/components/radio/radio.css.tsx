@@ -29,7 +29,6 @@ const base = style({
   }
 })
 
-
 export const radioStyles = styleVariants(variantStyles,
   (_variant, key) => {
     const refColor = variantDefinitions[key].backgroundColor
