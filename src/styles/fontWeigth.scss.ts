@@ -1,4 +1,4 @@
-import { createSquareTheme } from "./themes/helpers";
+import { createSquareTheme } from "./helpers";
 
 export const { fontWeight: fontWeightThemes } = createSquareTheme('fontWeight', {
   normal: '400',

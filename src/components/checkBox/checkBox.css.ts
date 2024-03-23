@@ -1,7 +1,5 @@
 import { style, styleVariants } from '@vanilla-extract/css';
-import { colorDefinitions, colorVariants } from '../../styles/variants/colors.css';
-import { colorsThemes } from '../../styles/themes/colors.css';
-import { borderStyleThemes } from '../../styles/themes/borders.css';
+import { colorDefinitions, colorsThemes } from '../../styles/colors.css';
 
 const base = style({
   width: "20px",
@@ -20,16 +18,16 @@ const base = style({
   }
 })
 
-export const checkBoxVariants = styleVariants(colorVariants,
-  (_variant, key) => {
-    const refColor = colorDefinitions[key].backgroundColor
+export const checkBoxVariants = styleVariants(colorDefinitions,
+  colorDefinition => {
+    const refColor = colorDefinition.backgroundColor
     const specific = {
       "selectors": {
         "&:checked:not(disabled)": {
           "backgroundColor": refColor,
         },
         "&:not(disabled)": {
-          "borderColor": colorDefinitions[key].color,
+          "borderColor": colorDefinition.color,
         },
         "&:disabled": {
           "borderColor": colorsThemes.interface.disabled,
@@ -39,6 +37,6 @@ export const checkBoxVariants = styleVariants(colorVariants,
         },
       }
     }
-    return [borderStyleThemes.type.normal, base, specific]
+    return [base, colorDefinition, specific]
   }
 )

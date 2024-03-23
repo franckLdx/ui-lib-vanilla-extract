@@ -1,13 +1,11 @@
 import { style, styleVariants } from '@vanilla-extract/css';
-import { borderStyleThemes } from '../../styles/themes/borders.css';
-import { colorsThemes } from '../../styles/themes/colors.css';
-import { colorVariants } from '../../styles/variants/colors.css';
+import { colorDefinitions, colorsThemes } from '../../styles/colors.css';
 
 const base = style({
   padding: 8,
   cursor: 'pointer',
   ":active": {
-    border: borderStyleThemes.type.bigger
+    border: "2px solid"
   },
   ":disabled": {
     backgroundColor: colorsThemes.interface.disabled,
@@ -30,10 +28,10 @@ const dark = style({
 })
 
 export const buttonVariants = styleVariants(
-  colorVariants,
-  (_variant, key) => {
+  colorDefinitions,
+  (colorDefinition, key) => {
     const specific = key === 'dark' ? [dark] : []
 
-    return [base, ...specific]
+    return [base, colorDefinition, ...specific]
   }
 )

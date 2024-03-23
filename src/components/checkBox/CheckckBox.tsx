@@ -1,6 +1,6 @@
 import { FC, MouseEventHandler } from "react";
 import { checkBoxVariants } from "./checkBox.css";
-import { Variant } from "../../styles/variants/variants.css";
+import { ColorVariant } from "../../styles/colors.css";
 
 export interface CheckEvent {
   id: string
@@ -11,13 +11,13 @@ export interface CheckEvent {
 
 export interface CheckBoxProps {
   id: string
-  variant: Variant
+  color: ColorVariant
   disabled?: boolean
   checked: boolean
   onChecked: (event: CheckEvent) => void
 }
 
-export const CheckBox: FC<CheckBoxProps> = ({ id, variant, checked, disabled, onChecked }) => {
+export const CheckBox: FC<CheckBoxProps> = ({ id, color, checked, disabled, onChecked }) => {
   const onClick: MouseEventHandler<HTMLInputElement> = (internalEvent) => {
     const event: CheckEvent = {
       id,
@@ -32,7 +32,7 @@ export const CheckBox: FC<CheckBoxProps> = ({ id, variant, checked, disabled, on
     <input
       id={id}
       name={id}
-      className={checkBoxVariants[variant]}
+      className={checkBoxVariants[color]}
       type="checkbox"
       checked={checked}
       disabled={disabled}

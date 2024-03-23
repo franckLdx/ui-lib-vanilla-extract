@@ -9,7 +9,8 @@ export type RadioButtonProps = {
 } & Omit<RadioProps, "onSelected">
 
 export const RadioButton: FC<RadioButtonProps> = ({ label, onSelected, ...radioProps }) => {
-  const { id, selected, disabled, variant } = radioProps
+  const { id, selected, disabled, color } = radioProps
+
   const onInternalClick: MouseEventHandler<HTMLDivElement> = (internalEvent) => {
     const event: SelectEvent = {
       id,
@@ -23,7 +24,7 @@ export const RadioButton: FC<RadioButtonProps> = ({ label, onSelected, ...radioP
   const containerClass = disabled ? containerState.disabled : containerState.enabled
 
   return (
-    <div className={`${containerClass} ${radioVariants[variant]}`} onClick={onInternalClick}>
+    <div className={`${containerClass} ${radioVariants[color]}`} onClick={onInternalClick}>
       <Radio {...radioProps} />
       {label}
     </div>

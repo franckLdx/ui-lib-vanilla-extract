@@ -5,6 +5,6 @@ import { Button } from './components/button/Button.tsx'
 
 export const App: FC = () => (
   <section className={appStyle}>
-    <Button label='FOO' variant={'brand'} />
+    <Button label='FOO' color={'brand'} />
   </section>
 )

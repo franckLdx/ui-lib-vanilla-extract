@@ -23,7 +23,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     id: 'id',
-    variant: 'brand',
+    color: 'brand',
     disabled: true,
     checked: false,
     onChecked: e => console.log(`${e.id} => ${e.checked}`)

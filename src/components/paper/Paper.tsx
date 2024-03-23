@@ -1,16 +1,16 @@
 import { FC, ReactNode } from 'react'
-import { Variant } from '../../styles/variants/variants.css'
-import { BorderType, borderColorVariants, borderTypeVariants } from '../../styles/variants/border.css'
-import { colorVariants } from '../../styles/variants/colors.css'
+import { paperVariants } from './paper.css'
+import { BorderType } from '../../styles/border.css'
+import { ColorVariant } from '../../styles/colors.css'
 
 export interface PaperProps {
-  variant: Variant
+  color: ColorVariant
   borderType?: BorderType
   children: ReactNode
 }
 
-export const Paper: FC<PaperProps> = ({ variant, borderType = 'none', children }) => (
-  <div className={`${colorVariants[variant]} ${borderColorVariants[variant]} ${borderTypeVariants[borderType]}`}>
+export const Paper: FC<PaperProps> = ({ color, children }) => (
+  <div className={`${paperVariants[color]}`}>
     {children}
   </div>
 )

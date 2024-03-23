@@ -1,6 +1,5 @@
 import { style, styleVariants } from '@vanilla-extract/css';
-import { colorsThemes } from '../../styles/themes/colors.css';
-import { colorDefinitions, colorVariants } from '../../styles/variants/colors.css';
+import { colorDefinitions, colorsThemes } from '../../styles/colors.css';
 
 const baseContainer = style({
   display: "flex",
@@ -19,8 +18,9 @@ export const containerState = styleVariants({
   }
 })
 
-export const radioVariants = styleVariants(colorVariants,
-  (_variant, key) => {
+export const radioVariants = styleVariants(
+  colorDefinitions,
+  colorDéfinition => {
     const common = {
       border: "1px solid",
       backgroundColor: "transparent",
@@ -28,13 +28,13 @@ export const radioVariants = styleVariants(colorVariants,
     const specific = {
       "selectors": {
         "&:not(disabled)": {
-          "borderColor": colorDefinitions[key].color,
+          "borderColor": colorDéfinition.color,
         },
         "&:disabled": {
           "borderColor": colorsThemes.interface.disabled,
         },
       }
     }
-    return [baseContainer, common, specific]
+    return [baseContainer, colorDéfinition, common, specific]
   }
 )
