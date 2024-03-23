@@ -1,18 +1,16 @@
 import { style, styleVariants } from '@vanilla-extract/css';
-import { borders } from '../../styles/borders.css';
-import { variantStyles } from '../../styles/variants.css';
-import { colors } from '../../styles/colors.css';
+import { borderStyleThemes } from '../../styles/themes/borders.css';
+import { colorsThemes } from '../../styles/themes/colors.css';
+import { colorVariants } from '../../styles/variants/colors.css';
 
 const base = style({
   padding: 8,
-  borderRadius: borders.radius.normal,
-  border: borders.style.normal,
   cursor: 'pointer',
   ":active": {
-    border: borders.style.bigest
+    border: borderStyleThemes.type.bigger
   },
   ":disabled": {
-    backgroundColor: colors.interface.darkgray,
+    backgroundColor: colorsThemes.interface.disabled,
     cursor: 'not-allowed'
   },
   selectors: {
@@ -24,19 +22,18 @@ const base = style({
 
 const dark = style({
   ":active": {
-    backgroundColor: colors.interface.lightgray,
+    backgroundColor: colorsThemes.interface.lightgray,
   },
   ":disabled": {
-    color: colors.text.dark,
+    color: colorsThemes.text.dark,
   }
 })
 
-export const buttonStyle = styleVariants(
-  variantStyles,
+export const buttonVariants = styleVariants(
+  colorVariants,
   (_variant, key) => {
-    const common = [base]
     const specific = key === 'dark' ? [dark] : []
 
-    return [...common, ...specific]
+    return [base, ...specific]
   }
 )

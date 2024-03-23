@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
-import { colors } from './styles/colors.css'
+import { colorsThemes } from './styles/themes/colors.css';
 
 export const appStyle = style({
-  backgroundColor: colors.interface.bright
+  backgroundColor: colorsThemes.interface.bright
 });

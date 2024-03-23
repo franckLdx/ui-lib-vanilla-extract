@@ -1,6 +1,6 @@
 import { FC, MouseEventHandler } from "react";
-import { Variant } from "../../styles/variants.css";
-import { CheckBoxStyles } from "./checkBox.css";
+import { checkBoxVariants } from "./checkBox.css";
+import { Variant } from "../../styles/variants/variants.css";
 
 export interface CheckEvent {
   id: string
@@ -32,7 +32,7 @@ export const CheckBox: FC<CheckBoxProps> = ({ id, variant, checked, disabled, on
     <input
       id={id}
       name={id}
-      className={CheckBoxStyles[variant]}
+      className={checkBoxVariants[variant]}
       type="checkbox"
       checked={checked}
       disabled={disabled}

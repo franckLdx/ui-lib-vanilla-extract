@@ -1,7 +1,7 @@
 import { FC, MouseEventHandler } from "react";
 import { Radio, RadioProps, SelectEvent } from "../radio/Radio";
 
-import { containerState, radioStyles } from "./radioButton.css";
+import { containerState, radioVariants } from "./radioButton.css";
 
 export type RadioButtonProps = {
   label: string
@@ -23,7 +23,7 @@ export const RadioButton: FC<RadioButtonProps> = ({ label, onSelected, ...radioP
   const containerClass = disabled ? containerState.disabled : containerState.enabled
 
   return (
-    <div className={`${containerClass} ${radioStyles[variant]}`} onClick={onInternalClick}>
+    <div className={`${containerClass} ${radioVariants[variant]}`} onClick={onInternalClick}>
       <Radio {...radioProps} />
       {label}
     </div>

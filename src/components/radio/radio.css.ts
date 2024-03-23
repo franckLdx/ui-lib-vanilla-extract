@@ -1,12 +1,11 @@
 import { style, styleVariants } from '@vanilla-extract/css';
-import { borders } from "../../styles/borders.css";
-import { variantDefinitions, variantStyles } from '../../styles/variants.css';
-import { colors } from '../../styles/colors.css';
+import { colorDefinitions, colorVariants } from '../../styles/variants/colors.css';
+import { colorsThemes } from '../../styles/themes/colors.css';
+import { borderStyleThemes } from '../../styles/themes/borders.css';
 
-const base = style({
+export const base = style({
   appearance: "none",
   borderRadius: "50%",
-  border: borders.style.normal,
   width: "20px",
   height: "20px",
   backgroundColor: "inherit",
@@ -29,16 +28,16 @@ const base = style({
   }
 })
 
-export const radioStyles = styleVariants(variantStyles,
+export const radioVariants = styleVariants(colorVariants,
   (_variant, key) => {
-    const refColor = variantDefinitions[key].backgroundColor
+    const refColor = colorDefinitions[key].backgroundColor;
     const specific = {
       "selectors": {
         "&:not(disabled)": {
-          "borderColor": variantDefinitions[key].color,
+          "borderColor": colorDefinitions[key].color,
         },
         "&:disabled": {
-          "borderColor": colors.interface.disabled,
+          "borderColor": colorsThemes.interface.disabled,
         },
         "&:not(disabled):hover::after": {
           backgroundColor: refColor,
@@ -47,10 +46,10 @@ export const radioStyles = styleVariants(variantStyles,
           backgroundColor: refColor,
         },
         "&:disabled:checked::after": {
-          backgroundColor: colors.interface.disabled,
+          backgroundColor: colorsThemes.interface.disabled,
         }
       }
-    }
-    return [base, specific]
+    };
+    return [borderStyleThemes.type.normal, base, specific];
   }
-)
+);

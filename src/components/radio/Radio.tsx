@@ -1,7 +1,6 @@
 import { FC, MouseEventHandler } from "react";
-import { Variant } from "../../styles/variants.css";
-
-import { radioStyles } from "./radio.css";
+import { Variant } from "../../styles/variants/variants.css";
+import { radioVariants } from "./radio.css";
 
 export interface SelectEvent {
   id: string
@@ -32,7 +31,7 @@ export const Radio: FC<RadioProps> = ({ id, variant, selected, disabled, onSelec
   return (
     <input
       title={id}
-      className={radioStyles[variant]}
+      className={radioVariants[variant]}
       type="radio"
       checked={selected}
       disabled={disabled}
