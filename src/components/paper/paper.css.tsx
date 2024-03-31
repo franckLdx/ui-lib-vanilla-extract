@@ -1,7 +1,12 @@
-import { styleVariants } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css';
 import { colorDefinitions } from '../../styles/colors.css';
-import { borderColorVariantDefinitions } from '../../styles/border.css';
+import { borderColorDefinitions } from '../../styles/border.css';
+
+const base = style({
+  padding: '8px',
+  borderRadius: '4px'
+})
 
 export const paperVariants = styleVariants(
   colorDefinitions,
-  (colorDefinition, key) => [colorDefinition, borderColorVariantDefinitions[key]])
+  (colorDefinition, key) => [base, colorDefinition, borderColorDefinitions[key]])

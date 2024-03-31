@@ -1,11 +1,11 @@
 import { FC, ReactNode } from 'react'
 import { paperVariants } from './paper.css'
-import { BorderType } from '../../styles/border.css'
+import { BorderStyle } from '../../styles/border.css'
 import { ColorVariant } from '../../styles/colors.css'
 
 export interface PaperProps {
   color: ColorVariant
-  borderType?: BorderType
+  borderType?: BorderStyle
   children: ReactNode
 }
 
