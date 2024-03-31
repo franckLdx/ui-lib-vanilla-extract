@@ -9,4 +9,9 @@ const base = style({
 
 export const paperVariants = styleVariants(
   colorDefinitions,
-  (colorDefinition, key) => [base, colorDefinition, borderColorDefinitions[key]])
+  (colorDefinition, key) => [
+    base,
+    colorDefinition,
+    borderColorDefinitions[key]
+  ]
+)

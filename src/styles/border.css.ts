@@ -9,6 +9,7 @@ export const borderColorDefinitions: Record<ColorVariant, any> = {
 
 export type BorderStyle = 'none' | 'normal' | 'normalLeft' | 'biggerLeft' | 'normalRight'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const borderStyleDefinitions: Record<BorderStyle, any> = {
   none: { borderStyle: "none" },
   normal: { borderStyle: "1px solid" },
