@@ -23,7 +23,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     id: 'id',
-    color: 'brand',
+    variant: 'brand',
     disabled: true,
     selected: false,
     label: 'Click here',

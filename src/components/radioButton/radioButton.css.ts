@@ -1,15 +1,17 @@
 import { style, styleVariants } from '@vanilla-extract/css';
-import { colorDefinitions, colorsThemes } from '../../styles/colors.css';
+import { colorsDefinitions, colorsThemes } from '../../styles/colors.css';
+import { bordersDefinitions } from '../../styles/border.css';
 
-const baseContainer = style({
+const base = style({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
   padding: '8px',
   gap: '4px',
+  ...bordersDefinitions.borderNormalSmall
 })
 
-export const containerState = styleVariants({
+export const state = styleVariants({
   "enabled": {
     cursor: "pointer",
   },
@@ -18,23 +20,19 @@ export const containerState = styleVariants({
   }
 })
 
-export const radioVariants = styleVariants(
-  colorDefinitions,
-  colorDéfinition => {
-    const common = {
-      border: "1px solid",
-      backgroundColor: "transparent",
-    }
+export const radioButtonVariants = styleVariants(
+  colorsDefinitions,
+  colorsDefinition => {
     const specific = {
       "selectors": {
         "&:not(disabled)": {
-          "borderColor": colorDéfinition.color,
+          "borderColor": colorsDefinition.color,
         },
         "&:disabled": {
           "borderColor": colorsThemes.interface.disabled,
         },
       }
     }
-    return [baseContainer, colorDéfinition, common, specific]
+    return [base, colorsDefinition, specific]
   }
 )

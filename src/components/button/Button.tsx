@@ -1,16 +1,16 @@
 import { FC } from "react";
 import { buttonVariants } from "./button.css";
-import { ColorVariant } from "../../styles/colors.css";
+import { ColorType } from "../../styles/colors.css";
 
 interface ButtonProps {
-  color: ColorVariant
+  variant: ColorType
   label: string
   disabled?: boolean
 }
 
-export const Button: FC<ButtonProps> = ({ color, label, disabled }) => (
+export const Button: FC<ButtonProps> = ({ variant, label, disabled }) => (
   <button
-    className={`${buttonVariants[color]}`}
+    className={buttonVariants[variant]}
     disabled={disabled}
   >
     {label}

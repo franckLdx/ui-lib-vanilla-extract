@@ -1,6 +1,6 @@
 import { FC, MouseEventHandler } from "react";
 import { radioVariants } from "./radio.css";
-import { ColorVariant } from "../../styles/colors.css";
+import { ColorType } from "../../styles/colors.css";
 
 export interface SelectEvent {
   id: string
@@ -11,13 +11,13 @@ export interface SelectEvent {
 
 export interface RadioProps {
   id: string
-  color: ColorVariant
+  variant: ColorType
   disabled?: boolean
   selected: boolean
   onSelected?: (event: SelectEvent) => void
 }
 
-export const Radio: FC<RadioProps> = ({ id, color, selected, disabled, onSelected }) => {
+export const Radio: FC<RadioProps> = ({ id, variant, selected, disabled, onSelected }) => {
   const onClick: MouseEventHandler<HTMLInputElement> | undefined = onSelected ? (internalEvent) => {
     const event: SelectEvent = {
       id,
@@ -31,7 +31,7 @@ export const Radio: FC<RadioProps> = ({ id, color, selected, disabled, onSelecte
   return (
     <input
       title={id}
-      className={radioVariants[color]}
+      className={radioVariants[variant]}
       type="radio"
       checked={selected}
       disabled={disabled}

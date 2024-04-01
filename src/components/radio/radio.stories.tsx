@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Radio } from './Radio';
+import { ColorType } from '../../styles/colors.css';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -23,7 +24,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     id: 'id',
-    color: 'brand',
+    variant: 'brand' as ColorType,
     disabled: true,
     selected: false,
     onSelected: e =>

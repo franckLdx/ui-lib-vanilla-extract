@@ -1,19 +1,52 @@
-import { ColorVariant, colorsThemes } from "./colors.css"
+import { colorsThemes } from "./colors.css"
+import { createSquareTheme } from "./helpers"
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const borderColorDefinitions: Record<ColorVariant, any> = {
-  brand: colorsThemes.interface.brand,
-  bright: colorsThemes.interface.bright,
-  dark: colorsThemes.interface.dark
-}
+export const { borderColors: borderColorsTheme } = createSquareTheme("borderColors", {
+  borderBrand: colorsThemes.interface.brand,
+  borderBright: colorsThemes.interface.bright,
+  borderDark: colorsThemes.interface.dark
+} as const)
 
-export type BorderStyle = 'none' | 'normal' | 'normalLeft' | 'biggerLeft' | 'normalRight'
+export const { borderWidths: borderWidthsTheme } = createSquareTheme("borderWidths", {
+  none: "none",
+  small: "1px",
+  medium: "2px",
+  large: "3px",
+  big: "4px",
+})
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const borderStyleDefinitions: Record<BorderStyle, any> = {
-  none: { borderStyle: "none" },
-  normal: { borderStyle: "1px solid" },
-  normalLeft: { borderLeft: "1px solid" },
-  biggerLeft: { borderLeft: "2px solid" },
-  normalRight: { borderRight: "1px solid" }
-}
+export const bordersDefinitions = {
+  borderNone: {
+    border: "none"
+  },
+  borderNormalSmall: {
+    border: `${borderWidthsTheme.small} solid`
+  },
+  borderNormalMedium: {
+    border: `${borderWidthsTheme.medium} solid`
+  },
+  borderNormalLarge: {
+    border: `${borderWidthsTheme.large} solid`
+  },
+  borderLeftSmall: {
+    borderLeft: `${borderWidthsTheme.small} solid`
+  },
+  borderLeftMedium: {
+    borderLeft: `${borderWidthsTheme.medium} solid`
+  },
+  borderLeftLarge: {
+    borderLeft: `${borderWidthsTheme.large} solid`
+  },
+  borderLeftBig: {
+    borderLeft: `${borderWidthsTheme.big} solid`
+  },
+  borderRightSmall: {
+    borderRight: `${borderWidthsTheme.small} solid`
+  },
+  borderRightMedium: {
+    borderRight: `${borderWidthsTheme.medium} solid`
+  },
+  borderRightLarge: {
+    borderRight: `${borderWidthsTheme.large} solid`
+  },
+} as const

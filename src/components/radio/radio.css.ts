@@ -1,5 +1,6 @@
 import { style, styleVariants } from '@vanilla-extract/css';
-import { colorDefinitions, colorsThemes } from '../../styles/colors.css';
+import { colorsDefinitions, colorsThemes } from '../../styles/colors.css';
+import { bordersDefinitions } from '../../styles/border.css';
 
 export const base = style({
   appearance: "none",
@@ -27,13 +28,14 @@ export const base = style({
 })
 
 export const radioVariants = styleVariants(
-  colorDefinitions,
-  colorDefinition => {
-    const refColor = colorDefinition.backgroundColor;
+  colorsDefinitions,
+  colorsDefinition => {
+    const refColor = colorsDefinition.backgroundColor;
     const specific = {
       "selectors": {
         "&:not(disabled)": {
-          "borderColor": colorDefinition.color,
+          "borderColor": colorsDefinition.color,
+          ...bordersDefinitions.borderNormalSmall
         },
         "&:disabled": {
           "borderColor": colorsThemes.interface.disabled,
@@ -42,13 +44,13 @@ export const radioVariants = styleVariants(
           backgroundColor: refColor,
         },
         "&:not(disabled):checked::after": {
-          backgroundColor: refColor,
+          backgroundColor: colorsDefinition.color,
         },
         "&:disabled:checked::after": {
           backgroundColor: colorsThemes.interface.disabled,
         }
       }
     };
-    return [colorDefinition, base, specific];
+    return [base, colorsDefinition, specific];
   }
 );

@@ -14,12 +14,13 @@ export const { colors: colorsThemes } = createSquareTheme('colors', {
     dark: '#232323',
     bright: "#fff"
   }
-})
+} as const)
 
-export type ColorVariant = "brand" | "bright" | "dark"
+
+export type ColorType = "brand" | "bright" | "dark"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const colorDefinitions: Record<ColorVariant, any> = {
+export const colorsDefinitions: Readonly<Record<ColorType, any>> = {
   brand: {
     color: colorsThemes.text.dark,
     backgroundColor: colorsThemes.interface.brand

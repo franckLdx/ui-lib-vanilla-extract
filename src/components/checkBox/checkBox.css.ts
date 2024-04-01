@@ -1,5 +1,5 @@
 import { style, styleVariants } from '@vanilla-extract/css';
-import { colorDefinitions, colorsThemes } from '../../styles/colors.css';
+import { colorsDefinitions, colorsThemes } from '../../styles/colors.css';
 
 const base = style({
   width: "20px",
@@ -18,13 +18,12 @@ const base = style({
   }
 })
 
-export const checkBoxVariants = styleVariants(colorDefinitions,
+export const checkBoxVariants = styleVariants(colorsDefinitions,
   colorDefinition => {
-    const refColor = colorDefinition.backgroundColor
     const specific = {
       "selectors": {
         "&:checked:not(disabled)": {
-          "backgroundColor": refColor,
+          "backgroundColor": colorDefinition.backgroundColor,
         },
         "&:not(disabled)": {
           "borderColor": colorDefinition.color,
